@@ -1,0 +1,67 @@
+<div class="col-md-12">
+    <div class="well bs-component">
+        <form class="form-horizontal" #DeleteProductoForm="ngForm" (ngSubmit)="onSubmit(categoria.id)" autocomplete="off">
+            <fieldset>
+                <legend *ngIf="producto.estadoDesc == 'Activo'">{{titulo_inactivo}}</legend>
+                <legend *ngIf="producto.estadoDesc == 'Inactivo'">{{titulo_activo}}</legend>
+                <div class="form-group">
+                    <label for="nombre" class="col-lg-2 control-label">Nombre</label>
+                    <div class="col-lg-10">
+                        <p class="text-muted">{{producto.nombre}}</p>
+                    </div>
+                    <div hidden="true" class="col-lg-10">
+                        <input type="text" class="form-control" id="nombre" required [(ngModel)]="producto.nombre" name="nombre" #nombre="ngModel">
+                        <span [hidden]="nombre.valid || nombre.pristine" class="text-danger">El nombre es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="codigo" class="col-lg-2 control-label">Código</label>
+                    <div class="col-lg-10">
+                        <p class="text-muted">{{producto.codigo}}</p>
+                    </div>
+                    <div hidden="true" class="col-lg-10">
+                        <input type="text" class="form-control" id="codigo" required [(ngModel)]="producto.codigo" name="codigo" #codigo="ngModel">
+                        <span [hidden]="codigo.valid || codigo.pristine" class="text-danger">El codigo es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cantidad" class="col-lg-2 control-label">Cantidad</label>
+                    <div class="col-lg-10">
+                        <p class="text-muted">{{producto.cantidad}}</p>
+                    </div>
+                    <div hidden="true" class="col-lg-10">
+                        <input type="text" class="form-control" id="cantidad" required [(ngModel)]="producto.cantidad" name="cantidad" #cantidad="ngModel">
+                        <span [hidden]="cantidad.valid || cantidad.pristine" class="text-danger">La cantidad es requerida.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="precio" class="col-lg-2 control-label">Precio</label>
+                    <div class="col-lg-10">
+                        <p class="text-muted">{{producto.precio}}</p>
+                    </div>
+                    <div hidden="true" class="col-lg-10">
+                        <input type="text" class="form-control" id="precio" required [(ngModel)]="producto.precio" name="precio" #precio="ngModel">
+                        <span [hidden]="precio.valid || precio.pristine" class="text-danger">El precio es requerido.</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="codigoCategoria" class="col-lg-2 control-label">Categoria</label>
+                    <div class="col-lg-10">
+                        <select id="codigoCategoria" [(ngModel)]="producto.codigoCategoria" name="codigoCategoria" #codigoCategoria="ngModel" class="form-control"
+                            disabled="disabled"> 
+                            <option *ngFor="let categoria of comboCategorias" [value]="categoria.id"
+                            [selected]="categoria.id == producto.codigoCategoria">{{categoria.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary" [disabled]="!DeleteProductoForm.valid">Submit</button>
+                        <button type="reset" class="btn btn-default" (click)="goBack()">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

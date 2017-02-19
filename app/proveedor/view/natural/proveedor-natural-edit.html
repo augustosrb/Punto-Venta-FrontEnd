@@ -1,0 +1,91 @@
+<div class="col-md-12">
+    <div class="well bs-component">
+        <form class="form-horizontal" #EditProveedorForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <fieldset>
+                <legend>{{titulo}}</legend>
+                <div class="form-group">
+                    <label for="nombre" class="col-lg-2 control-label">Nombres</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="nombre" required [(ngModel)]="proveedor.nombre" name="nombre" #nombre="ngModel">
+                        <span [hidden]="nombre.valid || nombre.pristine" class="text-danger">El nombre paterno es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="apepat" class="col-lg-2 control-label">Apellido Paterno</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="apepat" required [(ngModel)]="proveedor.apepat" name="apepat" #apepat="ngModel">
+                        <span [hidden]="apepat.valid || apepat.pristine" class="text-danger">El apellido paterno es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="apepat" class="col-lg-2 control-label">Apellido Materno</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="apemat" required [(ngModel)]="proveedor.apemat" name="apemat" #apemat="ngModel">
+                        <span [hidden]="apemat.valid || apemat.pristine" class="text-danger">El apellido materno es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sexo" class="col-lg-2 control-label">Sexo</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="sexo" required [(ngModel)]="proveedor.sexo" name="sexo" #sexo="ngModel">
+                            <option value="M">Hombre</option>
+                            <option value="F">Mujer</option>
+                        </select>
+                        <span [hidden]="tipdoc.valid || tipdoc.pristine" class="text-danger">Seleccione sexo.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tipdoc" class="col-lg-2 control-label">Tipo Documento</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="tipdoc" required [(ngModel)]="proveedor.tipdoc" name="tipdoc" #tipdoc="ngModel">
+                            <option value="DNI">DNI</option>
+                            <option value="carnet">Carnet de extranjeria</option>
+                        </select>
+                        <span [hidden]="tipdoc.valid || tipdoc.pristine" class="text-danger">Seleccione un tipo de documento.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nrodoc" class="col-lg-2 control-label">Nro. Documento</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="nrodoc" required [(ngModel)]="proveedor.nrodoc" name="nrodoc" #nrodoc="ngModel">
+                        <span [hidden]="nrodoc.valid || nrodoc.pristine" class="text-danger">El numero de documento es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="direccion" class="col-lg-2 control-label">Dirección</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="direccion" required [(ngModel)]="proveedor.direccion" name="direccion" #direccion="ngModel">
+                        <span [hidden]="direccion.valid || direccion.pristine" class="text-danger">La dirección es requerida.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="telefono" class="col-lg-2 control-label">Teléfono</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="telefono" required [(ngModel)]="proveedor.telefono" name="telefono" #telefono="ngModel">
+                        <span [hidden]="telefono.valid || telefono.pristine" class="text-danger">El telefono es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="correo" class="col-lg-2 control-label">Correo</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="correo" required [(ngModel)]="proveedor.correo" name="correo" #correo="ngModel">
+                        <span [hidden]="correo.valid || correo.pristine" class="text-danger">El correo es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="celular" class="col-lg-2 control-label">Celular</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="celular" required [(ngModel)]="proveedor.celular" name="celular" #celular="ngModel">
+                        <span [hidden]="celular.valid || celular.pristine" class="text-danger">El celular es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary" [disabled]="!EditProveedorForm.valid">Submit</button>
+                        <button type="reset" class="btn btn-default" (click)="goBack()">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

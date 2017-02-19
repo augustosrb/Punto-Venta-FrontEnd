@@ -1,0 +1,43 @@
+<div class="col-md-12">
+    <div class="well bs-component">
+        <form class="form-horizontal" #DeleteProveedorForm="ngForm" (ngSubmit)="onSubmit(proveedor.id)" autocomplete="off">
+            <fieldset>
+                <legend *ngIf="proveedor.estadoDesc == 'Activo'">{{titulo_inactivo}}</legend>
+                <legend *ngIf="proveedor.estadoDesc == 'Inactivo'">{{titulo_activo}}</legend>
+                <div class="form-group">
+                    <label for="nombre" class="col-lg-2 control-label">Nombres</label>
+                    <div class="col-lg-10">
+                        <p class="text-muted">{{proveedor.nombre}}</p>
+                    </div>
+                    <div hidden="true" class="col-lg-10">
+                        <input hidden="true" type="text" class="form-control" id="nombre" [(ngModel)]="proveedor.nombre" name="nombre" #nombre="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="apepat" class="col-lg-2 control-label">Apellido Paterno</label>
+                    <div class="col-lg-10">
+                        <p class="text-muted">{{proveedor.apepat}}</p>
+                    </div>
+                    <div hidden="true" class="col-lg-10">
+                        <input hidden="true" type="text" class="form-control" id="apepat" [(ngModel)]="proveedor.apepat" name="apepat" #apepat="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="apepat" class="col-lg-2 control-label">Apellido Materno</label>
+                    <div class="col-lg-10">
+                        <p class="text-muted">{{proveedor.apemat}}</p>
+                    </div>
+                    <div hidden="true" class="col-lg-10">
+                        <input type="text" class="form-control" id="apemat" [(ngModel)]="proveedor.apemat" name="apemat" #apemat="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary" [disabled]="!DeleteProveedorForm.valid">Submit</button>
+                        <button type="reset" class="btn btn-default" (click)="goBack()">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

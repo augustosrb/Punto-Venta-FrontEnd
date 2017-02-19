@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{titulo}}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="alert alert-dismissible alert-success" *ngIf="status_actions === 'success'">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button> Acción realizada Correctamente.
+                </div>
+                <div class="table-responsive">
+                    <div class="col-lg-4">
+                        <a [routerLink]="['/producto-add']" class="btn btn-success">Nuevo Producto</a>
+                    </div>
+                    <div class="col-lg-2" class="pull-right">
+                        <button type="button" class="btn btn-default" (click)="search()">
+                            Buscar
+                        </button>
+                    </div>
+                    <div class="col-lg-2" class="pull-right">
+                        <input type="text" class="form-control" placeholder="Producto" value="{{searchString}}" [(ngModel)]="searchString">
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Codigo</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="productos">
+                            <tr *ngFor="let producto of productos">
+                                <td>{{producto.nombre}}</td>
+                                <td>{{producto.codigo}}</td>
+                                <td>{{producto.precio}}</td>
+                                <td>{{producto.cantidad}}</td>
+                                <td>
+                                    <span *ngIf="producto.estadoDesc == 'Inactivo'" class="label label-sm label-danger">
+                        {{producto.estadoDesc}}
+                      </span>
+                                    <span *ngIf="producto.estadoDesc == 'Activo'" class="label label-sm label-success">
+                        {{producto.estadoDesc}}
+                      </span>
+                                </td>
+
+                                <td>
+                                    <a [routerLink]="['/producto-edit/',producto.id]">
+                                        <span id="editEspecialista" class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a [routerLink]="['/producto-delete/',producto.id]">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="pagination pagination-sm">
+                    <li [ngClass]="{disabled:first === true}">
+                        <a [routerLink]="['/producto-list', pagePrev]" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li *ngFor="let page of totalPages">
+                        <a [routerLink]="['/producto-list', page]">{{page + 1}}</a>
+                    </li>
+                    <li [ngClass]="{disabled:last === true}">
+                        <a [routerLink]="['/producto-list', pageNext]" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

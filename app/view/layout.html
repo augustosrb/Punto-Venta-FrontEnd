@@ -1,0 +1,38 @@
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="../" class="navbar-brand">Bootswatch</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Mantenimientos <span class="caret"></span></a>
+                    <ul class="dropdown-menu" aria-labelledby="themes">
+                        <li><a [routerLink]="['/proveedor-natural-list']">Proveedor Natural</a></li>
+                        <li><a [routerLink]="['/proveedor-juridico-list']">Proveedor Juridico</a></li>
+                        <li> <a [routerLink]="['/categoria-list']">Categoria</a></li>
+                        <li> <a [routerLink]="['/producto-list']">Producto</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="../help/">Otros</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">Usuario</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="bs-docs-section">
+        <router-outlet></router-outlet>
+    </div>
+</div>

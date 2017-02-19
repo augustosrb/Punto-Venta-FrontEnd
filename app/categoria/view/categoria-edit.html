@@ -1,0 +1,38 @@
+<div class="col-md-12">
+    <div class="well bs-component">
+        <form class="form-horizontal" #EditCategoriaForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <fieldset>
+                <legend>{{titulo}}</legend>
+                <div class="form-group">
+                    <label for="nombre" class="col-lg-2 control-label">Nombre</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="nombre" required [(ngModel)]="categoria.nombre" name="nombre" #nombre="ngModel">
+                        <span [hidden]="nombre.valid || nombre.pristine" class="text-danger">El nombre es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion" class="col-lg-2 control-label">Descripción</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="descripcion" required [(ngModel)]="categoria.descripcion" name="descripcion" #descripcion="ngModel">
+                        <span [hidden]="descripcion.valid || descripcion.pristine" class="text-danger">La descripción es requerida.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="grupo" class="col-lg-2 control-label">Grupo</label>
+                    <div class="col-lg-10">
+                        <select id="padre" [(ngModel)]="categoria.padre" name="padre" #padre="ngModel" class="form-control"> 
+                            <option *ngFor="let categoria of comboCategorias" [value]="categoria.id"
+                            [selected]="categoria.id == categoria.padre">{{categoria.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary" [disabled]="!EditCategoriaForm.valid">Submit</button>
+                        <button type="reset" class="btn btn-default" (click)="goBack()">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

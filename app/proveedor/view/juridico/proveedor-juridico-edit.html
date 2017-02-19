@@ -1,0 +1,80 @@
+<div class="col-md-12">
+    <div class="well bs-component">
+        <form class="form-horizontal" #EditProveedorForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+            <fieldset>
+                <legend>{{titulo}}</legend>
+                <div class="form-group">
+                    <label for="razsoc" class="col-lg-2 control-label">Razon social</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="razsoc" required [(ngModel)]="proveedor.razsoc" name="razsoc" #razsoc="ngModel">
+                        <span [hidden]="razsoc.valid || razsoc.pristine" class="text-danger">La razon social es requerida.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ruc" class="col-lg-2 control-label">RUC</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="ruc" required [(ngModel)]="proveedor.ruc" name="ruc" #ruc="ngModel">
+                        <span [hidden]="ruc.valid || ruc.pristine" class="text-danger">El ruc es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tipdoc" class="col-lg-2 control-label">Tipo Documento</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="tipdoc" required [(ngModel)]="proveedor.tipdoc" name="tipdoc" #tipdoc="ngModel">
+                            <option value="DNI">DNI</option>
+                            <option value="carnet">Carnet de extranjeria</option>
+                        </select>
+                        <span [hidden]="tipdoc.valid || tipdoc.pristine" class="text-danger">Seleccione un tipo de documento.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nrodoc" class="col-lg-2 control-label">Nro. Documento</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="nrodoc" required [(ngModel)]="proveedor.nrodoc" name="nrodoc" #nrodoc="ngModel">
+                        <span [hidden]="nrodoc.valid || nrodoc.pristine" class="text-danger">El numero de documento es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="direccion" class="col-lg-2 control-label">Dirección</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="direccion" required [(ngModel)]="proveedor.direccion" name="direccion" #direccion="ngModel">
+                        <span [hidden]="direccion.valid || direccion.pristine" class="text-danger">La dirección es requerida.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="telefono" class="col-lg-2 control-label">Teléfono</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="telefono" required [(ngModel)]="proveedor.telefono" name="telefono" #telefono="ngModel">
+                        <span [hidden]="telefono.valid || telefono.pristine" class="text-danger">El telefono es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="correo" class="col-lg-2 control-label">Correo</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="correo" required [(ngModel)]="proveedor.correo" name="correo" #correo="ngModel">
+                        <span [hidden]="correo.valid || correo.pristine" class="text-danger">El correo es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="celular" class="col-lg-2 control-label">Celular</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="celular" required [(ngModel)]="proveedor.celular" name="celular" #celular="ngModel">
+                        <span [hidden]="celular.valid || celular.pristine" class="text-danger">El celular es requerido.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tipper" class="col-lg-2 control-label">Tipo</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="tipo" required [(ngModel)]="proveedor.tipo" name="tipo" #tipo="ngModel">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary" [disabled]="!EditProveedorForm.valid">Submit</button>
+                        <button type="reset" class="btn btn-default" (click)="goBack()">Cancel</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
